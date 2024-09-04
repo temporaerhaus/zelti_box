@@ -1,0 +1,13 @@
+name: Build STLs
+on: [push]
+jobs:
+  make:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get install openscad
+      - run: make
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Zelti STLs
+          path: '*.stl'
